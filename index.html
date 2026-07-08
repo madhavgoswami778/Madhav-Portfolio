@@ -6,12 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Madhav Goswami | Portfolio</title>
 
-  <!-- Google Fonts: Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CSS (v3 Script for JIT & arbitrary values) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -61,13 +59,11 @@
 
 <body class="bg-slate-950 text-slate-300 font-sans antialiased overflow-x-hidden selection:bg-indigo-500/30">
 
-  <!-- Floating Background Blobs -->
   <div class="fixed inset-0 z-[-1] pointer-events-none overflow-hidden">
     <div class="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-indigo-600/20 blur-[120px]"></div>
     <div class="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-cyan-600/20 blur-[120px]"></div>
   </div>
 
-  <!-- Navbar -->
   <header class="fixed w-full top-0 z-50 glass-nav transition-all duration-300">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
       <h1 class="text-2xl font-bold text-white tracking-tight">Madhav<span class="text-indigo-500">.</span></h1>
@@ -76,10 +72,9 @@
         <a href="#about" class="hover:text-white transition-colors duration-200">About</a>
         <a href="#projects" class="hover:text-white transition-colors duration-200">Projects</a>
         <a href="#contact" class="hover:text-white transition-colors duration-200">Contact</a>
-        <a href="Data_Analysis_Project_(6)" target="_blank"
+        <a href="resume.pdf" target="_blank"
           class="text-indigo-400 hover:text-indigo-300 transition-colors duration-200">Resume</a>
       </nav>
-      <!-- Mobile Menu Button -->
       <button class="md:hidden text-slate-300 hover:text-white">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -88,7 +83,6 @@
     </div>
   </header>
 
-  <!-- Home Section -->
   <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6">
     <div class="text-center max-w-3xl mx-auto">
       <div class="relative inline-block mb-8">
@@ -108,14 +102,13 @@
         <a href="#projects"
           class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white text-slate-900 font-semibold hover:bg-slate-200 transition-all duration-300 transform hover:scale-105">View
           My Work</a>
-        <a href="Data_Analysis_Project_(6)" download
+        <a href="resume.pdf" download="Madhav_Goswami_Resume.pdf"
           class="w-full sm:w-auto px-8 py-3.5 rounded-full glass-card text-white font-medium hover:bg-slate-800 transition-all duration-300 border border-slate-700 hover:border-slate-500">Download
           Resume</a>
       </div>
     </div>
   </section>
 
-  <!-- About & Skills Section -->
   <section id="about" class="py-24 px-6 relative">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-16">
@@ -163,7 +156,6 @@
     </div>
   </section>
 
-  <!-- Projects Section -->
   <section id="projects" class="py-24 px-6 relative z-10">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16">
@@ -172,7 +164,6 @@
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Project 1: Mindwell -->
         <div
           class="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-300 hover:border-cyan-500/30">
           <div class="relative h-56 overflow-hidden bg-slate-900">
@@ -199,7 +190,6 @@
           </div>
         </div>
 
-        <!-- Project 2: HireLink -->
         <div
           class="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-300 hover:border-indigo-500/30">
           <div class="relative h-56 overflow-hidden bg-slate-900">
@@ -226,7 +216,6 @@
           </div>
         </div>
 
-        <!-- Project 3: Lumina Gear -->
         <div
           class="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-300 hover:border-blue-500/30">
           <div class="relative h-56 overflow-hidden bg-slate-900">
@@ -256,7 +245,6 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
   <section id="contact" class="py-24 px-6">
     <div class="max-w-3xl mx-auto">
       <div class="text-center mb-12">
@@ -293,7 +281,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="border-t border-white/5 bg-slate-950 py-8 text-center text-sm text-slate-500 mt-12">
     <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
       <p>&copy; 2026 Madhav Goswami. All rights reserved.</p>
