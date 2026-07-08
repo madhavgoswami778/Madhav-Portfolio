@@ -251,7 +251,7 @@
         <p class="text-slate-400">Have a project in mind or just want to say hi? Feel free to reach out.</p>
       </div>
 
-    <form action="https://sheetdb.io/api/v1/nxkbpleiazkmv" method="POST" class="glass-card p-8 md:p-10 rounded-3xl space-y-6">
+      <form id="contactForm" class="glass-card p-8 md:p-10 rounded-3xl space-y-6">
         <div class="grid md:grid-cols-2 gap-6">
           <div class="space-y-2">
             <label class="text-sm font-medium text-slate-300 ml-1">Name</label>
@@ -280,6 +280,21 @@
     </div>
   </section>
 
+  <div id="successModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+    <div class="glass-card max-w-md w-full p-8 rounded-3xl text-center scale-95 transition-transform duration-300 bg-slate-900/90 border border-emerald-500/30 shadow-2xl shadow-emerald-500/10">
+      <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-emerald-500/10 text-emerald-400 mb-6 border border-emerald-500/20">
+        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <h3 class="text-2xl font-bold text-white mb-2">Message Sent!</h3>
+      <p class="text-slate-400 mb-6">Thank you, Madhav will get back to you as soon as possible.</p>
+      <button id="closeModalBtn" class="w-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-semibold px-6 py-3 rounded-xl hover:opacity-90 transform hover:-translate-y-0.5 transition-all duration-300">
+        Awesome
+      </button>
+    </div>
+  </div>
+
   <footer class="border-t border-white/5 bg-slate-950 py-8 text-center text-sm text-slate-500 mt-12">
     <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
       <p>&copy; 2026 Madhav Goswami. All rights reserved.</p>
@@ -291,6 +306,66 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const modal = document.getElementById('successModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Stop standard redirect layout loop
+      
+      const originalBtnText = submitBtn.innerHTML;
+      submitBtn.innerText = "Sending...";
+      submitBtn.disabled = true;
+
+      // Send form details to SheetDB asynchronously via AJAX fetch API channel
+      fetch("https://sheetdb.io/api/v1/nxkbpleiazkmv", {
+        method: "POST",
+        body: new FormData(form)
+      })
+      .then(response => {
+        if (response.ok) {
+          form.reset(); // Clear user entries safely
+          
+          // Switch display mode container and force UI paint reflow layout trigger
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          
+          // Tiny delay for modern CSS scale and opacity transitions to play nicely together
+          setTimeout(() => {
+            modal.classList.remove('opacity-0');
+            modal.querySelector('.glass-card').classList.remove('scale-95');
+            modal.querySelector('.glass-card').classList.add('scale-100');
+          }, 10);
+        } else {
+          alert("Something went wrong. Please try again!");
+        }
+      })
+      .catch(error => {
+        console.error("Error submitting form:", error);
+        alert("Network error. Please try again later.");
+      })
+      .finally(() => {
+        // Re-enable and reset main call-to-action styling states
+        submitBtn.innerHTML = originalBtnText;
+        submitBtn.disabled = false;
+      });
+    });
+
+    // Close the popup gracefully on action completion
+    closeModalBtn.addEventListener('click', function() {
+      modal.classList.add('opacity-0');
+      modal.querySelector('.glass-card').classList.remove('scale-100');
+      modal.querySelector('.glass-card').classList.add('scale-95');
+      
+      setTimeout(() => {
+        modal.classList.remove('flex');
+        modal.classList.add('hidden');
+      }, 300); // Wait for the transition to finish (matches duration-300)
+    });
+  </script>
 
 </body>
 
